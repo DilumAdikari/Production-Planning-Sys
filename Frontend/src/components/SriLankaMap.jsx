@@ -1,9 +1,9 @@
-// frontend/src/components/SriLankaMap.jsx
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
-// Leaflet default pin icon fix
+// Fix missing marker icons in Leaflet + Vite
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -11,22 +11,44 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
+// Component to handle auto-resizing
+const MapResizer = () => {
+  const map = useMap();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [map]);
+  return null;
+};
+
 const SriLankaMap = ({ plants = [] }) => {
-  // Center: Sri Lanka Central Province coordinates
-  const position = [7.8731, 80.7718];
+  // Center of Sri Lanka
+  const centerPosition = [7.8731, 80.7718];
 
   return (
     <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
       <h3 className="font-bold text-slate-800 text-sm mb-3">Subcontractor Plants Live Map</h3>
-      <div className="h-96 w-full rounded-lg overflow-hidden border border-slate-100">
-        <MapContainer center={position} zoom={7.5} scrollWheelZoom={false} className="h-full w-full">
+      
+      {/* Explicit height wrapper (h-[420px]) */}
+      <div className="h-[420px] w-full rounded-lg overflow-hidden border border-slate-100 relative">
+        <MapContainer
+          center={centerPosition}
+          zoom={7.5}
+          scrollWheelZoom={false}
+          style={{ height: '100%', width: '100%' }}
+        >
+          <MapResizer />
+
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+
           {plants.map((plant) => (
-            <Marker 
-              key={plant._id || plant.code} 
+            <Marker
+              key={plant._id || plant.code}
               position={[plant.location?.lat || 7.0, plant.location?.lng || 80.0]}
             >
               <Popup>

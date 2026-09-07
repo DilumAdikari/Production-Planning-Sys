@@ -1,10 +1,11 @@
-import mongoose from 'mongoose';
+// Backend/models/Plant.js
+const mongoose = require('mongoose');
 
 const plantSchema = new mongoose.Schema({
   code: { type: String, required: true, unique: true, uppercase: true },
   name: { type: String, required: true },
   district: { type: String, required: true },
-  capacity: { type: Number, required: true }, // Daily pieces capacity
+  capacity: { type: Number, required: true },
   phone: { type: String },
   location: {
     lat: { type: Number, required: true },
@@ -15,4 +16,4 @@ const plantSchema = new mongoose.Schema({
   complianceDocUrl: { type: String }
 }, { timestamps: true });
 
-export default mongoose.model('Plant', plantSchema);
+module.exports = mongoose.model('Plant', plantSchema);

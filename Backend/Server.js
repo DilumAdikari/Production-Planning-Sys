@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection
 /// const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/textrack_db';
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)

@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Layers, LayoutDashboard, Factory, Scissors, PackageCheck, BarChart3 } from 'lucide-react';
 
 const Navbar = () => {
   const navClass = ({ isActive }) =>
@@ -23,9 +22,6 @@ const Navbar = () => {
             <div className="flex items-center space-x-2">
               <span className="font-extrabold text-xl tracking-tight text-slate-900">
                 <span className="text-blue-800">Elisha</span> Clothing
-              </span>
-              <span className="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                Garment ERP
               </span>
             </div>
           </div>

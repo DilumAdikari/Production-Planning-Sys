@@ -32,13 +32,10 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
-app.use('/api/plants', require('./routes/plantRoutes')); // 
-// app.use('/api/loading', require('./routes/loadingRoutes'));
+app.use('/api/plants', require('./routes/plantRoutes'));
+app.use('/api/loading', require('./routes/loadingRoutes'));
 // app.use('/api/grn', require('./routes/grnRoutes'));
 // app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/analytics', require('./routes/analyticsRoutes'));
-app.use('/api/plants', require('./routes/plantRoutes'));
-app.use('/api/loading', require('./routes/loadingRoutes')); 
 
 // 404 Route Handler
 app.use((req, res) => {

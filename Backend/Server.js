@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // MongoDB Connection
-/// const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/textrack_db';
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGO_URI)
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 
 // API Routes
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
-// app.use('/api/plants', require('./routes/plantRoutes'));
+app.use('/api/plants', require('./routes/plantRoutes')); // 
 // app.use('/api/loading', require('./routes/loadingRoutes'));
 // app.use('/api/grn', require('./routes/grnRoutes'));
 // app.use('/api/users', require('./routes/userRoutes'));

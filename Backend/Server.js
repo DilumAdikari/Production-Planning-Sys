@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 app.use('/api/analytics', require('./routes/analyticsRoutes'));
 app.use('/api/plants', require('./routes/plantRoutes'));
 app.use('/api/loading', require('./routes/loadingRoutes'));
-// app.use('/api/grn', require('./routes/grnRoutes'));
+app.use('/api/grn', require('./routes/grnRoutes'));
+app.use('/api/departments', require('./routes/departmentRoutes'));
 // app.use('/api/users', require('./routes/userRoutes'));
 
 // 404 Route Handler

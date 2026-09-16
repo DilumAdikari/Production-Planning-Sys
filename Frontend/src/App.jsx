@@ -6,6 +6,7 @@ import Plants from './pages/Plants';
 import CutLoading from './pages/CutLoading';
 import GrnReceipts from './pages/GrnReceipts';
 import BalanceReports from './pages/BalanceReports';
+import Departments from './pages/Departments';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/cut-loading" element={<CutLoading />} />
           <Route path="/grn" element={<GrnReceipts />} />
           <Route path="/balance" element={<BalanceReports />} />
+          <Route path="/departments" element={<Departments />} />
         </Routes>
       </main>
     </div>

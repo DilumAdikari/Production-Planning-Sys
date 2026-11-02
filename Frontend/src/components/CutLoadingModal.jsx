@@ -72,7 +72,7 @@ const CutLoadingModal = ({ isOpen, onClose, onLoadingAdded }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+    <div className="font-sans fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
       <div className="bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden my-6 border border-slate-100">
         {/* Header */}
         <div className="px-6 py-4 bg-blue-600 text-white flex items-center justify-between">
